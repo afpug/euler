@@ -1,0 +1,3 @@
+#!/bin/bash
+
+java -cp jars/clojure-1.1.jar:jars/clojure-contrib-1.1.jar:jars/jline-0.9.94.jar jline.ConsoleRunner clojure.main
