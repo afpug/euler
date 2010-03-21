@@ -1,0 +1,14 @@
+Name:                Qxjit-Euler
+Version:             0.0
+Description:         Qxjit's Project Euler Solutions for AFPUG
+License:             BSD3
+License-file:        LICENSE
+Author:              David Vollbracht
+Maintainer:          david.vollbracht@gmail.com
+Build-Type:          Simple
+Cabal-Version:       >=1.2
+
+Executable euler
+  Main-is:           main.hs
+  Build-Depends:     base >=4 && < 5
+
