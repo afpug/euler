@@ -73,3 +73,16 @@
         (if (palindrome? (first prods))
             (first prods)
         (recur (rest prods)))))
+        
+(defn gcd
+    " return the greatest common divisor between two numbers "
+    [a b]
+    (loop [num1 a num2 b]
+        (if (= 0 (mod num1 num2))
+        num2
+        (recur num2 (mod num1 num2)))))
+        
+(defn lcm
+    " return the least common multiple between two numbers "
+    [a b]
+    (* (/ a (gcd a b)) b))

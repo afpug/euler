@@ -55,4 +55,17 @@
     (println "Problem 4 = " (problem4 3))
     (is (= 9009 (problem4 2)))
     (is (= 906609 (problem4 3))))
+    
+(deftest test-gcd
+    " test the GCD function "
+    (is (= 21 (gcd 1071 462)))
+    (is (= 21 (gcd 252 105)))
+    (is (= 6 (gcd 84 18))))
+    
+(deftest test-lcm
+    " test the LCM function "
+    (is (= 12 (lcm 4 6)))
+    (is (= 42 (lcm 21 6)))
+    (is (= 720 (lcm 180 48))))
+    
 
