@@ -42,7 +42,7 @@
             (if (>= num sq)
                 (sort facs)
                 (if (= 0 (mod n num))
-                    (recur (inc num) (concat [num (/ n num)] facs))
+                    (recur (inc num) (concat [(/ n num) num] facs))
                     (recur (inc num) facs))))))
                     
 (defn prime-factors
