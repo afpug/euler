@@ -31,4 +31,28 @@
     " Problem 3"
     (println "Problem 3 = " (problem3 600851475143))
     (is (= 6857 (problem3 600851475143))))
+    
+(deftest test-calc-products
+    " testing calc products "
+    (is (some #{81} (calc-products 1)))
+    (is (some #{20} (calc-products 1)))
+    (is (some #{7452} (calc-products 2)))
+    (is (not (some #{81} (calc-products 2)))))
+    
+(deftest test-palindrome?
+    " test that the palindrome tester works "
+    (is (palindrome? 900009))
+    (is (palindrome? 99))
+    (is (palindrome? 99499))
+    (is (palindrome? 98766789))
+    (is (palindrome? 78387))
+    (is (not (palindrome? 98)))
+    (is (not (palindrome? 9877891)))
+    (is (not (palindrome? 7811287))))
+    
+(deftest test-problem4
+    " test problem4 "
+    (println "Problem 4 = " (problem4 3))
+    (is (= 9009 (problem4 2)))
+    (is (= 906609 (problem4 3))))
 

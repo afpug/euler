@@ -2,7 +2,7 @@
 
 (ns euler
     (:gen-class)
-    (:use [clojure.contrib.math :only (round, sqrt)]))
+    (:use [clojure.contrib.math :only (expt, round, sqrt)]))
     
 (defn problem1
     " Add all the natural numbers below one thousand that are multiples of 3 or 5. "
@@ -54,3 +54,22 @@
     " What is the largest prime factor of the number 600851475143 ? "
     [n]
     (last (prime-factors n)))
+    
+(defn calc-products
+    " calculate all distinct products of an n-digit number "
+    [n]
+    (let [nums (range (expt 10 (- n 1)) (expt 10 n))]
+        (sort (distinct (mapcat concat (map (fn[j](map (fn[i](* i j)) nums)) nums))))))
+        
+(defn palindrome?
+    " determines if a given number n is a palindrome "
+    [n]
+    (= (seq (str n)) (reverse (str n))))
+    
+(defn problem4
+    " Find the largest palindrome made from the product of two 3-digit numbers. "
+    [n]
+    (loop [prods (reverse (calc-products n))]
+        (if (palindrome? (first prods))
+            (first prods)
+        (recur (rest prods)))))
