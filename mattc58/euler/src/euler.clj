@@ -40,7 +40,7 @@
         (loop [ num 2
                 facs []]
             (if (>= num sq)
-                (sort facs)
+                (sort (cons n facs))
                 (if (= 0 (mod n num))
                     (recur (inc num) (concat [(/ n num) num] facs))
                     (recur (inc num) facs))))))
@@ -49,6 +49,20 @@
     " return the prime factors for n "
     [n]
     (filter prime? (factors n)))
+    
+(defn prime-factorization
+    " return the entire prime factorization for n "
+    [n]
+    (loop [ num n 
+            primes (sort #(compare %2 %1) (prime-factors n)) 
+            factorization []]
+        (cond 
+            (empty? primes)
+                factorization
+            (= 0 (mod num (first primes))) 
+                (recur (/ num (first primes)) primes (cons (first primes) factorization))
+            :else (recur num (rest primes) factorization))))
+        
     
 (defn problem3
     " What is the largest prime factor of the number 600851475143 ? "
@@ -86,3 +100,19 @@
     " return the least common multiple between two numbers "
     [a b]
     (* (/ a (gcd a b)) b))
+
+(defn lcm-multiple
+    " return the least common multiple for multiple integers "
+    [col]
+    ;;  note: this is way too slow for anything past 1 .. 12
+    (loop [c col]
+        (if (apply = c)
+            (first c)
+            (let [min (apply min c)]
+                (recur 
+                    (for [i (range (count c))] (if (= (nth c i) min) (+ (nth c i) (nth col i)) (nth c i))))))))
+    
+(defn problem5
+    " What is the smallest number that is evenly divisible by all of the numbers from 1 to 20? "
+    [a b]
+    (lcm-multiple (range a (inc b))))
