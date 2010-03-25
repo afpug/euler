@@ -95,3 +95,19 @@
             primes (distinct (apply concat prime-facs))]
         (apply * (map #(expt (first (keys %)) (first (vals %))) 
                     (map (fn[p](hash-map p (apply max (map #(count (filter #{p} %)) prime-facs)))) primes)))))
+     
+(defn sum-of-squares
+    " calculate the sum of squares between two numbers "
+    [a b]
+    (apply + (map #(expt % 2) (range a (inc b)))))
+    
+(defn square-of-sums
+    " calculate the square of sums between two numbers "
+    [a b]
+    (expt (apply + (range a (inc b))) 2))
+                   
+(defn problem6
+    " Find the difference between the sum of the squares and the square of the sum for ints between 1 and 100. "
+    [a b]
+    (- (square-of-sums a b) (sum-of-squares a b)))
+
