@@ -1,2 +1,5 @@
-*.jar
-*.class
+pom-generated.xml
+Manifest.txt
+euler.jar
+lib
+classes
