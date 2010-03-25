@@ -68,4 +68,9 @@
     (is (= 42 (lcm 21 6)))
     (is (= 720 (lcm 180 48))))
     
+(deftest test-problem5
+    " test problem 5 "
+    (println "Problem 5 = " (problem5 1 20))
+    (is (= 232792560 (problem5 1 20))))
+    
 

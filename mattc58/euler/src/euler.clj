@@ -40,7 +40,7 @@
         (loop [ num 2
                 facs []]
             (if (>= num sq)
-                (sort (cons n facs))
+                (sort facs)
                 (if (= 0 (mod n num))
                     (recur (inc num) (concat [(/ n num) num] facs))
                     (recur (inc num) facs))))))
@@ -58,7 +58,7 @@
             factorization []]
         (cond 
             (empty? primes)
-                factorization
+                (if (prime? n) (cons n factorization) factorization)
             (= 0 (mod num (first primes))) 
                 (recur (/ num (first primes)) primes (cons (first primes) factorization))
             :else (recur num (rest primes) factorization))))
@@ -115,4 +115,6 @@
 (defn problem5
     " What is the smallest number that is evenly divisible by all of the numbers from 1 to 20? "
     [a b]
-    (lcm-multiple (range a (inc b))))
+    (let [prime-facs (map prime-factorization (range a (inc b)))]
+    )
+        )
