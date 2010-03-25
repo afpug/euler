@@ -110,4 +110,10 @@
     " Find the difference between the sum of the squares and the square of the sum for ints between 1 and 100. "
     [a b]
     (- (square-of-sums a b) (sum-of-squares a b)))
+    
+(defn problem7
+    " What is the 10001st prime number? "
+    [n]
+    (let [primes (filter #(not (nil? %)) (map #(if (prime? %) %) (range 2 200000)))]
+        (nth primes (- n 1))))
 

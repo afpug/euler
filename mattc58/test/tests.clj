@@ -66,4 +66,9 @@
     (println "Problem 6 = " (problem6 1 100))
     (is (= 25164150 (problem6 1 100))))
     
+(deftest test-problem7
+    " test problem 7"
+    (println "Problem 7 = " (problem7 10001))
+    (is (= 104743 (problem7 10001))))
+    
 
