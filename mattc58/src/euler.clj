@@ -50,20 +50,6 @@
     [n]
     (filter prime? (factors n)))
     
-(defn prime-factorization
-    " return the entire prime factorization for n "
-    [n]
-    (loop [ num n 
-            primes (sort #(compare %2 %1) (prime-factors n)) 
-            factorization []]
-        (cond 
-            (empty? primes)
-                (if (prime? n) (cons n factorization) factorization)
-            (= 0 (mod num (first primes))) 
-                (recur (/ num (first primes)) primes (cons (first primes) factorization))
-            :else (recur num (rest primes) factorization))))
-        
-    
 (defn problem3
     " What is the largest prime factor of the number 600851475143 ? "
     [n]
@@ -88,33 +74,24 @@
             (first prods)
         (recur (rest prods)))))
         
-(defn gcd
-    " return the greatest common divisor between two numbers "
-    [a b]
-    (loop [num1 a num2 b]
-        (if (= 0 (mod num1 num2))
-        num2
-        (recur num2 (mod num1 num2)))))
-        
-(defn lcm
-    " return the least common multiple between two numbers "
-    [a b]
-    (* (/ a (gcd a b)) b))
+(defn prime-factorization
+    " return the entire prime factorization for n "
+    [n]
+    (loop [ num n 
+            primes (sort #(compare %2 %1) (prime-factors n)) 
+            factorization []]
+        (cond 
+            (empty? primes)
+                (if (prime? n) (cons n factorization) factorization)
+            (= 0 (mod num (first primes))) 
+                (recur (/ num (first primes)) primes (cons (first primes) factorization))
+            :else (recur num (rest primes) factorization))))
 
-(defn lcm-multiple
-    " return the least common multiple for multiple integers "
-    [col]
-    ;;  note: this is way too slow for anything past 1 .. 12
-    (loop [c col]
-        (if (apply = c)
-            (first c)
-            (let [min (apply min c)]
-                (recur 
-                    (for [i (range (count c))] (if (= (nth c i) min) (+ (nth c i) (nth col i)) (nth c i))))))))
-    
+
 (defn problem5
     " What is the smallest number that is evenly divisible by all of the numbers from 1 to 20? "
     [a b]
-    (let [prime-facs (map prime-factorization (range a (inc b)))]
-    )
-        )
+    (let [  prime-facs (map prime-factorization (range a (inc b)))
+            primes (distinct (apply concat prime-facs))]
+        (apply * (map #(expt (first (keys %)) (first (vals %))) 
+                    (map (fn[p](hash-map p (apply max (map #(count (filter #{p} %)) prime-facs)))) primes)))))
