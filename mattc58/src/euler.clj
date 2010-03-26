@@ -124,5 +124,20 @@
     [digits]
     (apply max (map #(reduce * %) (map #(take 5 (drop % digits)) (range (- (count digits) 4))))))
 
+(defn pythagorean-triplet?
+    " returns true if a*a + b*b = c * c"
+    [a b c]
+    (= (expt c 2) (+ (expt a 2) (expt b 2))))
+    
+(defn pythagorean-triplets
+    " return all pythagorean triplets with a, b, c all between the ranges given "
+    [min-a max-c]
+    (filter #(not-empty %)
+    (map (fn[a] (filter #(not-empty %)
+            (map (fn[b] (filter #(not (nil? %))
+                (map (fn[c] 
+                    (if (and (< a b c) (pythagorean-triplet? a b c)) [a b c])) (range min-a max-c)))) 
+                        (range min-a max-c)))) 
+                            (range min-a max-c))))
     
 
