@@ -6,13 +6,15 @@
  
 (deftest test-problem1
     " Problem 1 "
-    (println "Problem 1 = " (problem1 1000))
-    (is (= 233168 (problem1 1000))))
+    (let [answer (problem1 1000)]
+        (println "Problem 1 = " answer)
+        (is (= 233168 answer))))
     
 (deftest test-problem2
     " Problem 2"
-    (println "Problem 2 = " (problem2 4000000))
-    (is (= 4613732 (problem2 4000000))))
+    (let [answer (problem2 4000000)]
+        (println "Problem 2 = " answer)
+        (is (= 4613732 answer))))
     
 (deftest test-prime?
     " test that our prime tester works "
@@ -29,8 +31,9 @@
     
 (deftest test-problem3
     " Problem 3"
-    (println "Problem 3 = " (problem3 600851475143))
-    (is (= 6857 (problem3 600851475143))))
+    (let [answer (problem3 600851475143)]
+        (println "Problem 3 = " answer)
+        (is (= 6857 answer))))
     
 (deftest test-calc-products
     " testing calc products "
@@ -52,23 +55,33 @@
     
 (deftest test-problem4
     " test problem4 "
-    (println "Problem 4 = " (problem4 3))
-    (is (= 9009 (problem4 2)))
-    (is (= 906609 (problem4 3))))
+    (let [answer (problem4 3)]
+        (println "Problem 4 = " answer)
+        (is (= 9009 (problem4 2)))
+        (is (= 906609 answer))))
     
 (deftest test-problem5
     " test problem 5 "
-    (println "Problem 5 = " (problem5 1 20))
-    (is (= 232792560 (problem5 1 20))))
+    (let [answer (problem5 1 20)]
+        (println "Problem 5 = " answer)
+        (is (= 232792560 answer))))
     
 (deftest test-problem6
     " test problem 6 "
-    (println "Problem 6 = " (problem6 1 100))
-    (is (= 25164150 (problem6 1 100))))
+    (let [answer (problem6 1 100)]
+        (println "Problem 6 = " answer)
+        (is (= 25164150 answer))))
     
 (deftest test-problem7
     " test problem 7"
-    (println "Problem 7 = " (problem7 10001))
-    (is (= 104743 (problem7 10001))))
+    (let [answer (problem7 10001)]
+        (println "Problem 7 = " answer)
+        (is (= 104743 answer))))
+    
+(deftest test-problem8
+    " test problem 8"
+    (let [answer (problem8 problem8-digits)]
+        (println "Problem 8 = " answer)
+        (is (= 40824 answer))))
     
 
