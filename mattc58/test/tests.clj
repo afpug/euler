@@ -88,6 +88,6 @@
     " test problem 9 "
     (let [answer (problem9 1000)]
         (println "Problem 9 = " answer)
-        (is (= 31875000 answer))))
+        (is (= 31875000 (first answer)))))
     
 
