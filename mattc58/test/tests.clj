@@ -90,4 +90,10 @@
         (println "Problem 9 = " answer)
         (is (= 31875000 (first answer)))))
     
+(deftest test-problem10
+    " test problem 10 "
+    (let [answer (problem10 2000000)]
+        (println "Problem 10 = " answer)
+        (is (= 142913828922 answer))))
+
 

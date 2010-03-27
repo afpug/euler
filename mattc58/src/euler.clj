@@ -152,6 +152,11 @@
                         (map (fn[c](if (and (< a b c) (= n (+ a b c))) [a b c])) (range 3 n)))) 
                                 (range 2 (- n 1))))) 
                                     (range 1 (- n 2))))))))
+                                    
+(defn problem10
+    " Find the sum of all the primes below two million. "
+    [n]
+    (reduce + (filter #(prime? %) (cons 2 (filter #(odd? %) (range 2 n))))))
     
     
 
