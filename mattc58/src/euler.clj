@@ -141,6 +141,7 @@
                             
 (defn problem9
     " There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc."
+    ; it's not perfect, missing 30 40 50 if passing in 120 as n. but it works for 1000.
     [n]
     (map #(reduce * %)
     (first (first
@@ -148,9 +149,9 @@
             (map (fn[a] (filter #(not-empty %)
                     (map (fn[b] (filter #(and (not (nil? %)) 
                             (pythagorean-triplet? (first %) (second %) (nth % 2)))
-                        (map (fn[c](if (and (< a b c) (= n (+ a b c))) [a b c])) (range 1 (- n 2))))) 
+                        (map (fn[c](if (and (< a b c) (= n (+ a b c))) [a b c])) (range 3 n)))) 
                                 (range 2 (- n 1))))) 
-                                    (range 3 n)))))))
+                                    (range 1 (- n 2))))))))
     
     
 
