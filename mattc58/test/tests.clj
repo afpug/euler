@@ -83,5 +83,11 @@
     (let [answer (problem8 problem8-digits)]
         (println "Problem 8 = " answer)
         (is (= 40824 answer))))
+        
+(deftest test-problem9
+    " test problem 9 "
+    (let [answer (problem9 1000)]
+        (println "Problem 9 = " answer)
+        (is (= 31875000 answer))))
     
 

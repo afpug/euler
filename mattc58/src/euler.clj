@@ -1,5 +1,4 @@
 ;; The main functions for Euler
-
 (ns euler
     (:gen-class)
     (:use [clojure.contrib.math :only (expt, round, sqrt)]))
@@ -139,5 +138,19 @@
                     (if (and (< a b c) (pythagorean-triplet? a b c)) [a b c])) (range min-a max-c)))) 
                         (range min-a max-c)))) 
                             (range min-a max-c))))
+                            
+(defn problem9
+    " There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc."
+    [n]
+    (map #(reduce * %)
+    (first (first
+        (filter #(not-empty %)
+            (map (fn[a] (filter #(not-empty %)
+                    (map (fn[b] (filter #(and (not (nil? %)) 
+                            (pythagorean-triplet? (first %) (second %) (nth % 2)))
+                        (map (fn[c](if (and (< a b c) (= n (+ a b c))) [a b c])) (range 1 (- n 2))))) 
+                                (range 2 (- n 1))))) 
+                                    (range 3 n)))))))
+    
     
 
