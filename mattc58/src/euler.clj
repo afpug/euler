@@ -156,7 +156,7 @@
 (defn problem10
     " Find the sum of all the primes below two million. "
     [n]
-    (reduce + (filter #(prime? %) (cons 2 (filter #(odd? %) (range 2 n))))))
+    (reduce + (filter #(prime? %) (cons 2 (range 3 n 2)))))
     
     
 
